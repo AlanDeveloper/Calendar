@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --watch .",
+    "dev": "nodemon -r dotenv/config --watch .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,11 +19,13 @@
   },
   "homepage": "https://github.com/AlanDeveloper/Calendar#readme",
   "devDependencies": {
+    "dotenv": "^16.0.1",
     "nodemon": "^2.0.19"
   },
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.1",
-    "express-ejs-layouts": "^2.5.1"
+    "express-ejs-layouts": "^2.5.1",
+    "pg-promise": "^10.11.1"
   }
 }
