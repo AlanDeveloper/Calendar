@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(expressEjsLayouts);
-app.set("layout extractScripts", true)
+app.set("layout extractScripts", true);
 
 app.use(express.static("public"));
 app.use("/", routes);

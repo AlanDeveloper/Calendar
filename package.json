@@ -20,6 +20,7 @@
   "homepage": "https://github.com/AlanDeveloper/Calendar#readme",
   "devDependencies": {
     "dotenv": "^16.0.1",
+    "eslint": "^8.20.0",
     "nodemon": "^2.0.19"
   },
   "dependencies": {
