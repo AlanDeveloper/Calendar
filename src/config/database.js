@@ -1,14 +1,14 @@
-import pgPromise from 'pg-promise';
+import pgPromise from "pg-promise";
 
 const pgp = pgPromise({
     connect(client, dc, useCount) {
-        const cp = client.connectionParameters; 
-        console.log('Connected to database:', cp.database);
+        const cp = client.connectionParameters;
+        console.log("Connected to database:", cp.database);
     },
 
     disconnect(client, dc) {
         const cp = client.connectionParameters;
-        console.log('Disconnecting from database:', cp.database);
+        console.log("Disconnecting from database:", cp.database);
     }
 });
 
