@@ -21,10 +21,19 @@ class AuthController {
             password: req.body.password,
         };
 
-        AuthModel.create(obj).then(() => {
-            console.log("usuario criado");
-            return res.redirect("login");
+        AuthModel.create(obj).then(result => {
+            req.session.user = { id: result.id, name: obj.name };
+
+            return res.redirect("dashboard");
+        }).catch(err => {
+            return res.render("auth/register", { error: err });
         });
+    };
+
+    logout = async (req, res) => {
+        req.session.destroy();
+
+        return res.redirect("/login");
     };
 }
 

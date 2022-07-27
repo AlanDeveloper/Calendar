@@ -7,6 +7,10 @@ routes.get("/", function (req, res) {
     return res.render("index");
 });
 
+routes.get("/dashboard", function (req, res) {
+    return res.render("dashboard");
+});
+
 routes.use("/", authRoutes);
 
 // NOT FOUND
