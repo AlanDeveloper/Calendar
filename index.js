@@ -9,11 +9,17 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(session({
-    secret: "chave secreta de criptografia",
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+
+    next();
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
