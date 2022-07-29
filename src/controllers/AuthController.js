@@ -18,7 +18,7 @@ class AuthController {
         AuthModel.checkLogin(obj).then(result => {
             req.session.user = { id: result.id, name: result.name };
 
-            return res.redirect("dashboard");
+            return res.redirect("/dashboard");
         }).catch(err => {
             if (err instanceof QueryResultError) {
                 err = "User not found.";
@@ -41,7 +41,7 @@ class AuthController {
         AuthModel.create(obj).then(result => {
             req.session.user = { id: result.id, name: obj.name };
 
-            return res.redirect("dashboard");
+            return res.redirect("/dashboard");
         }).catch(err => {
             return res.render("auth/register", { error: err });
         });

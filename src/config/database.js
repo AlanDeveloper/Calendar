@@ -1,5 +1,6 @@
 import pgPromise from "pg-promise";
 import UserRepository from "../repositories/UserRepository.js";
+import TeamRepository from "../repositories/TeamRepository.js";
 
 const pgp = pgPromise({
     // eslint-disable-next-line no-unused-vars
@@ -12,6 +13,7 @@ const pgp = pgPromise({
     extend(obj, dc) {
         // dc = database context;
         obj.users = new UserRepository(obj, pgp);
+        obj.teams = new TeamRepository(obj, pgp);
         // You can set different repositories based on `dc`
     },
 

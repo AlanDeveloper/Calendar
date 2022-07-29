@@ -1,0 +1,13 @@
+<h1>Team</h1>
+<form method="post">
+    <label for="name">Nome</label>
+    <input type="text" name="name" id="name" placeholder="Digite o nome do time" maxlength="255" required>
+    <label for="description">Descrição</label>
+    <textarea name="description" id="description" cols="30" rows="10" placeholder="Digite uma descrição" maxlength="1000" required></textarea>
+    <input type="submit" value="Criar">
+    <% if(typeof error !=='undefined' ){ %>
+        <p>
+            <%= error %>
+        </p>
+    <% } %>
+</form>
