@@ -1,15 +1,6 @@
 import express from "express";
 import authRoutes from "./authRoutes.js";
-
-function isAuthenticated(req, res, next) {
-    if (req.session.user) next();
-    else res.redirect("login");
-}
-
-function isNotAuthenticated(req, res, next) {
-    if (!req.session.user) next();
-    else res.redirect("dashboard");
-}
+import isAuthenticated from "../helpers/isAuthenticated.js";
 
 const routes = express.Router();
 
@@ -21,7 +12,7 @@ routes.get("/dashboard", isAuthenticated, function (req, res) {
     return res.render("dashboard");
 });
 
-routes.use("/", isNotAuthenticated, authRoutes);
+routes.use("/", authRoutes);
 
 // NOT FOUND
 routes.use(function (req, res) {

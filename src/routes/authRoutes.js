@@ -1,14 +1,16 @@
 import express from "express";
 import AuthController from "../controllers/AuthController.js";
+import isNotAuthenticated from "../helpers/isNotAuthenticated.js";
+import isAuthenticated from "../helpers/isAuthenticated.js";
 
 const authRoutes = express.Router();
 
-authRoutes.get("/login", AuthController.getLogin);
-authRoutes.post("/login", AuthController.postLogin);
+authRoutes.get("/login", isNotAuthenticated, AuthController.getLogin);
+authRoutes.post("/login", isNotAuthenticated, AuthController.postLogin);
 
-authRoutes.get("/register", AuthController.getRegister);
-authRoutes.post("/register", AuthController.postRegister);
+authRoutes.get("/register", isNotAuthenticated, AuthController.getRegister);
+authRoutes.post("/register", isNotAuthenticated, AuthController.postRegister);
 
-authRoutes.get("/logout", AuthController.logout);
+authRoutes.get("/logout", isAuthenticated, AuthController.logout);
 
 export default authRoutes;

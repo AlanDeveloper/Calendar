@@ -1,4 +1,7 @@
+import pgPromise from "pg-promise";
 import AuthModel from "../models/AuthModel.js";
+
+const QueryResultError = pgPromise.errors.QueryResultError;
 
 class AuthController {
 
@@ -7,7 +10,21 @@ class AuthController {
     };
 
     postLogin = (req, res) => {
-        return res.render("auth/login");
+        let obj = {
+            email: req.body.email,
+            password: req.body.password
+        };
+
+        AuthModel.checkLogin(obj).then(result => {
+            req.session.user = { id: result.id, name: result.name };
+
+            return res.redirect("dashboard");
+        }).catch(err => {
+            if (err instanceof QueryResultError) {
+                err = "User not found.";
+            }
+            return res.render("auth/login", { error: err });
+        });
     };
 
     getRegister = (req, res) => {

@@ -7,4 +7,9 @@
     <input type="password" name="password" id="password" placeholder="Digite sua senha">
     <input type="submit" value="Entrar">
     <a href="/register">Não possui uma conta? Cadastre-se</a>
+    <% if(typeof error !=='undefined' ){ %>
+        <p>
+            <%= error %>
+        </p>
+    <% } %>
 </form>
