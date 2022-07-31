@@ -1,4 +1,8 @@
+import pgPromise from "pg-promise";
 import TeamModel from "../models/TeamModel.js";
+import ParticipantModel from "../models/ParticipantModel.js";
+
+const QueryResultError = pgPromise.errors.QueryResultError;
 
 class TeamController {
 
@@ -13,11 +17,29 @@ class TeamController {
             boosId: req.session.user.id
         };
 
-        TeamModel.create(obj).then(() => {
+        TeamModel.create(obj).then(result => {
+            let obj2 = {
+                userId: req.session.user.id,
+                teamId: result.id
+            };
 
-            return res.redirect("/dashboard");
+            ParticipantModel.create(obj2).then(() => {
+
+                return res.redirect("/dashboard");
+            });
         }).catch(err => {
             return res.render("team/register", { error: err });
+        });
+    };
+
+
+    getYourTeams = (req, res) => {
+        TeamModel.myTeams(req.session.user.id).then(teams => {
+            return res.render("team/list", { teams: teams });
+        }).catch(err => {
+            if (err instanceof QueryResultError) {
+                return res.render("team/list", { teams: [] });
+            }
         });
     };
 }

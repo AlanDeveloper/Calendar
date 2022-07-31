@@ -5,7 +5,15 @@ class TeamRepository {
     }
 
     add(obj) {
-        return this.rep.none(`INSERT INTO teams(name, description, "boosId") VALUES('${obj.name}', '${obj.description}', ${obj.boosId})`);
+        return this.rep.one(`INSERT INTO teams(name, description, "boosId") VALUES('${obj.name}', '${obj.description}', ${obj.boosId}) RETURNING id`, a => a.id);
+    }
+
+    listAll() {
+        return this.rep.many("SELECT * FROM teams");
+    }
+
+    myTeams(userId) {
+        return this.rep.many(`SELECT * FROM teams INNER JOIN participants ON participants."teamId" = teams.id WHERE participants."userId" = ${userId}`);
     }
 }
 
