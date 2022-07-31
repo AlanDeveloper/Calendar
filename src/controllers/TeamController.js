@@ -44,7 +44,9 @@ class TeamController {
     };
 
     getExit = (req, res) => {
-        return res.redirect("dashboard");
+        ParticipantModel.delete(req.query.teamId, req.session.user.id).then(() => {
+            return res.redirect("/dashboard");
+        });
     };
 }
 

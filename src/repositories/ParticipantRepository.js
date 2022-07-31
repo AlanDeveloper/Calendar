@@ -11,6 +11,10 @@ class ParticipantRepository {
     listAll(teamId) {
         return this.rep.many(`SELECT * FROM participants INNER JOIN users ON users.id = participants."userId" WHERE "teamId" = ${teamId}`);
     }
+
+    delete(teamId, userId) {
+        return this.rep.none(`DELETE FROM participants WHERE "userId" = ${userId} AND "teamId" = ${teamId}`);
+    }
 }
 
 export default ParticipantRepository;
