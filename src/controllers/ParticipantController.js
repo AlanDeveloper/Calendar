@@ -14,6 +14,12 @@ class ParticipantController {
             }
         });
     };
+
+    getExit = (req, res) => {
+        ParticipantModel.delete(req.query.teamId, req.session.user.id).then(() => {
+            return res.redirect("/dashboard");
+        });
+    };
 }
 
 export default new ParticipantController;

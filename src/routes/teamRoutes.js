@@ -12,6 +12,8 @@ teamRoutes.get("/team/list", isAuthenticated, TeamController.getYourTeams);
 
 teamRoutes.get("/team/participants", isAuthenticated, ParticipantController.getList);
 
-teamRoutes.get("/team/exit", isAuthenticated, TeamController.getExit);
+teamRoutes.get("/team/exit", isAuthenticated, ParticipantController.getExit);
+
+teamRoutes.get("/team/delete", isAuthenticated, TeamController.getDelete);
 
 export default teamRoutes;

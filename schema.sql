@@ -16,12 +16,17 @@ CREATE TABLE "teams" (
     "boosId" INT NOT NULL,
     "createdAt" TIMESTAMP DEFAULT NOW(),
     FOREIGN KEY ("boosId") REFERENCES "users"("id")
+        ON DELETE SET NULL
 );
 
 CREATE TABLE "participants" (
     "userId" INT NOT NULL,
     "teamId" INT NOT NULL,
     "createdAt" TIMESTAMP DEFAULT NOW(),
-    FOREIGN KEY ("userId") REFERENCES "users"("id"),
+    FOREIGN KEY ("userId") REFERENCES "users"("id")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY ("teamId") REFERENCES "teams"("id")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );

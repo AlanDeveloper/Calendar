@@ -6,8 +6,10 @@
                 <p>
                     <%= teams[i].name %>
                 </p>
-                <a href="#">Ver participantes</a>
-                <a href="#">Enviar convite</a>
+                <a href="/team/participants?teamId=<%=teams[i].id%>">Ver participantes</a>
+                <% if (user.id === teams[i].boosId) { %>
+                    <a href="/team/delete?teamId=<%=teams[i].id%>">Apagar time</a>
+                <% } %>
                 <a href="/team/exit?teamId=<%=teams[i].id%>">Sair</a>
             </div>
         </li>

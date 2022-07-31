@@ -15,6 +15,10 @@ class TeamRepository {
     myTeams(userId) {
         return this.rep.many(`SELECT * FROM teams INNER JOIN participants ON participants."teamId" = teams.id WHERE participants."userId" = ${userId}`);
     }
+
+    delete(teamId) {
+        return this.rep.none(`DELETE FROM teams WHERE id = ${teamId}`);
+    }
 }
 
 export default TeamRepository;
