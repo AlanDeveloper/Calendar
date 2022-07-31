@@ -10,6 +10,8 @@ teamRoutes.post("/team/register", isAuthenticated, TeamController.postRegister);
 
 teamRoutes.get("/team/list", isAuthenticated, TeamController.getYourTeams);
 
-teamRoutes.get("/team/participants", isAuthenticated, ParticipantController.list);
+teamRoutes.get("/team/participants", isAuthenticated, ParticipantController.getList);
+
+teamRoutes.get("/team/exit", isAuthenticated, TeamController.getExit);
 
 export default teamRoutes;

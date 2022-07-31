@@ -42,6 +42,10 @@ class TeamController {
             }
         });
     };
+
+    getExit = (req, res) => {
+        return res.redirect("dashboard");
+    };
 }
 
 export default new TeamController;

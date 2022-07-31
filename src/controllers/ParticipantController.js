@@ -5,7 +5,7 @@ const QueryResultError = pgPromise.errors.QueryResultError;
 
 class ParticipantController {
 
-    list = (req, res) => {
+    getList = (req, res) => {
         console.log(req.query.teamId);
         ParticipantModel.listAll(req.query.teamId).then(participants => {
             return res.render("team/participants", { participants: participants });

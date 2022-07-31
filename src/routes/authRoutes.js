@@ -11,6 +11,6 @@ authRoutes.post("/login", isNotAuthenticated, AuthController.postLogin);
 authRoutes.get("/register", isNotAuthenticated, AuthController.getRegister);
 authRoutes.post("/register", isNotAuthenticated, AuthController.postRegister);
 
-authRoutes.get("/logout", isAuthenticated, AuthController.logout);
+authRoutes.get("/logout", isAuthenticated, AuthController.getLogout);
 
 export default authRoutes;

@@ -47,7 +47,7 @@ class AuthController {
         });
     };
 
-    logout = async (req, res) => {
+    getLogout = async (req, res) => {
         req.session.destroy();
 
         return res.redirect("/login");
