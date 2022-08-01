@@ -1,4 +1,10 @@
-<h1>Meus times</h1>
+<h1>
+    <% if (user.id == query.userId) { %>
+        Meus
+    <% } else { %>
+        Seus
+    <% } %>
+    times</h1>
 <% for (let i=0; i < teams.length; i++) { %>
     <ul>
         <li>

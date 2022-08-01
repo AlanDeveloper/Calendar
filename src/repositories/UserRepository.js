@@ -12,6 +12,10 @@ class UserRepository {
         return this.rep.one(`SELECT * FROM users WHERE email = '${obj.email}' AND password = MD5('${obj.password}')`);
     }
 
+    listAll() {
+        return this.rep.many("SELECT * FROM users");
+    }
+
     remove(id) {
         return this.rep.none("DELETE FROM users WHERE id = $1", id);
     }

@@ -3,7 +3,7 @@
     <%= user.name %>
 </p>
 <a href="/team/register">Criar time</a>
-<a href="/team/list">Seus times</a>
+<a href="/team/list?userId=<%= user.id %>">Meus times</a>
 <a href="/logout">Sair</a>
 
 <h1>Times</h1>
@@ -14,6 +14,17 @@
                 <p><%= teams[i].name %></p>
                 <a href="/team/participants?teamId=<%=teams[i].id%>">Ver participantes</a>
                 <a href="#">Enviar convite</a>
+            </div>
+        </li>
+    </ul>
+<% } %>
+<h1>Usuários</h1>
+<% for (let j=0; j < users.length; j++) { %>
+    <ul>
+        <li>
+            <div>
+                <p><%= users[j].name %></p>
+                <a href="/team/list?userId=<%= users[j].id %>">Ver times</a>
             </div>
         </li>
     </ul>

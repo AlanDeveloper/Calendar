@@ -34,7 +34,7 @@ class TeamController {
 
 
     getYourTeams = (req, res) => {
-        TeamModel.myTeams(req.session.user.id).then(teams => {
+        TeamModel.myTeams(req.query.userId).then(teams => {
             return res.render("team/list", { teams: teams });
         }).catch(err => {
             if (err instanceof QueryResultError) {
