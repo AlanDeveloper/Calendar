@@ -13,7 +13,7 @@
                     <%= teams[i].name %>
                 </p>
                 <a href="/team/participants?teamId=<%=teams[i].id%>">Ver participantes</a>
-                <% if (user.id === teams[i].boosId) { %>
+                <% if (user.id === teams[i].boosId && user.id == query.userId) { %>
                     <a href="/team/delete?teamId=<%=teams[i].id%>">Apagar time</a>
                 <% } %>
                 <a href="/team/exit?teamId=<%=teams[i].id%>">Sair</a>

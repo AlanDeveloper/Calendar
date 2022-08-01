@@ -30,3 +30,22 @@ CREATE TABLE "participants" (
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
+
+
+CREATE TABLE "invitations" (
+    "id" SERIAL PRIMARY KEY,
+    "status" BOOLEAN DEFAULT NULL,
+    "userId" INT NOT NULL,
+    "teamId" INT NOT NULL,
+    "createdAt" TIMESTAMP DEFAULT NOW(),
+    "createdBy" INT NOT NULL,
+    FOREIGN KEY ("userId") REFERENCES "users"("id")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY ("teamId") REFERENCES "teams"("id")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY ("createdBy") REFERENCES "users"("id")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
