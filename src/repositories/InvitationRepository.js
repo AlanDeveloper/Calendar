@@ -9,7 +9,7 @@ class InvitationRepository {
     }
 
     getInvites(teamId) {
-        return this.rep.many(`SELECT users.*, invitations.id, users.id AS userId FROM invitations INNER JOIN users ON users.id = invitations."userId" WHERE "teamId" = ${teamId} AND invitations.status IS NULL`);
+        return this.rep.many(`SELECT invitations.*, users.name AS name FROM invitations INNER JOIN users ON users.id = invitations."userId" WHERE "teamId" = ${teamId} AND invitations.status IS NULL`);
     }
 
     approve(inviteId) {
@@ -18,6 +18,10 @@ class InvitationRepository {
 
     reject(inviteId) {
         return this.rep.none(`UPDATE invitations SET status = false WHERE id = ${inviteId}`);
+    }
+
+    cancel(inviteId) {
+        return this.rep.none(`DELETE FROM invitations WHERE id = ${inviteId}`);
     }
 }
 

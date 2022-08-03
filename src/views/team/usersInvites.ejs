@@ -1,0 +1,14 @@
+<h1>Convidar usuários</h1>
+<% for (let j=0; j < users.length; j++) { %>
+    <ul>
+        <li>
+            <div>
+                <p>
+                    <%= users[j].name %>
+                </p>
+                <a href="/team/invite?teamId=<%=query.teamId%>&&userId=<%=users[j].id%>">Convidar</a>
+                <a href="/team/list?userId=<%= users[j].id %>">Ver times</a>
+            </div>
+        </li>
+    </ul>
+<% } %>

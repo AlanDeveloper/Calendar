@@ -1,6 +1,7 @@
 import pgPromise from "pg-promise";
 import InvitationModel from "../models/InvitationModel.js";
 import ParticipantModel from "../models/ParticipantModel.js";
+import UserModel from "../models/UserModel.js";
 
 const QueryResultError = pgPromise.errors.QueryResultError;
 
@@ -33,6 +34,18 @@ class InvitationController {
     getRejectInvite = (req, res) => {
         InvitationModel.reject(req.query.inviteId).then(() => {
             return res.redirect("/team/invite/list?teamId=" + req.query.teamId);
+        });
+    };
+
+    getCancelInvite = (req, res) => {
+        InvitationModel.cancel(req.query.inviteId).then(() => {
+            return res.redirect("/team/invite/list?teamId=" + req.query.teamId);
+        });
+    };
+
+    getInvitationUsers = (req, res) => {
+        UserModel.listNoParticipants(req.query.teamId).then(users => {
+            return res.render("team/usersInvites", { users: users });
         });
     };
 }

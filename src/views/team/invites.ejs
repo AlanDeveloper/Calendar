@@ -1,10 +1,23 @@
-<h1>Convites</h1>
+<h1>Convites Recebidos</h1>
 <% for (let i=0; i < invites.length; i++) { %>
-    <div>
-        <p>
-            <%= invites[i].name %><%=invites[i].id%>
-        </p>
-        <a href="/team/invite/approve?inviteId=<%=invites[i].id%>&&teamId=<%=query.teamId%>">Aprovar</a>
-        <a href="/team/invite/reject?inviteId=<%=invites[i].id%>&&teamId=<%=query.teamId%>">Rejeitar</a>
-    </div>
+    <% if (invites[i].userId == invites[i].createdBy) { %>
+        <div>
+            <p>
+                <%= invites[i].name %>
+            </p>
+            <a href="/team/invite/approve?inviteId=<%=invites[i].id%>&&teamId=<%=query.teamId%>">Aprovar</a>
+            <a href="/team/invite/reject?inviteId=<%=invites[i].id%>&&teamId=<%=query.teamId%>">Rejeitar</a>
+        </div>
+    <% } %>
+<% } %>
+<h1>Convites Enviados</h1>
+<% for (let i=0; i < invites.length; i++) { %>
+    <% if (invites[i].userId != invites[i].createdBy) { %>
+        <div>
+            <p>
+                <%= invites[i].name %>
+            </p>
+            <a href="/team/invite/cancel?inviteId=<%=invites[i].id%>&&teamId=<%=query.teamId%>">Cancelar</a>
+        </div>
+    <% } %>
 <% } %>

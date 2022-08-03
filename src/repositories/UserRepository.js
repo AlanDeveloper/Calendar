@@ -19,6 +19,10 @@ class UserRepository {
     remove(id) {
         return this.rep.none("DELETE FROM users WHERE id = $1", id);
     }
+
+    listNoParticipants(teamId) {
+        return this.rep.many(`SELECT * FROM users WHERE users.id NOT IN (SELECT "userId" FROM participants WHERE participants."teamId" = ${teamId}) AND users.id NOT IN (SELECT "userId" FROM invitations WHERE invitations."teamId" = ${teamId})`);
+    }
 }
 
 export default UserRepository;
