@@ -25,7 +25,7 @@ class InvitationRepository {
     }
 
     myInvites(userId) {
-        return this.rep.many(`SELECT teams.*, invitations.id AS "inviteId", users.name AS "bossName" FROM invitations INNER JOIN teams ON invitations."teamId" = teams.id INNER JOIN users ON users.id = invitations."userId" WHERE invitations."userId" = ${userId}`);
+        return this.rep.many(`SELECT teams.*, invitations.id AS "inviteId", users.name AS "bossName" FROM invitations INNER JOIN teams ON invitations."teamId" = teams.id INNER JOIN users ON users.id = invitations."userId" WHERE invitations."userId" = ${userId} AND invitations.status = null`);
     }
 }
 
