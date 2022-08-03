@@ -23,6 +23,10 @@ class InvitationRepository {
     cancel(inviteId) {
         return this.rep.none(`DELETE FROM invitations WHERE id = ${inviteId}`);
     }
+
+    myInvites(userId) {
+        return this.rep.many(`SELECT teams.*, invitations.id AS inviteId, users.name AS "bossName" FROM invitations INNER JOIN teams ON invitations."teamId" = teams.id INNER JOIN users ON users.id = invitations."userId" WHERE invitations."userId" = ${userId}`);
+    }
 }
 
 export default InvitationRepository;

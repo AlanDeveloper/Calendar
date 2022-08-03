@@ -7,8 +7,8 @@
 <a href="/logout">Sair</a>
 
 <h1>Times</h1>
-<% for (let i=0; i < teams.length; i++) { %>
-    <ul>
+<ul>
+    <% for (let i=0; i < teams.length; i++) { %>
         <li>
             <div>
                 <p><%= teams[i].name %></p>
@@ -20,16 +20,30 @@
                 <% } %>
             </div>
         </li>
-    </ul>
-<% } %>
+    <% } %>
+</ul>
+<h1>Convites Recebidos</h1>
+<ul>
+    <% for (let i=0; i < invites.length; i++) { %>
+        <li>
+            <div>
+                <p><%= invites[i].name %></p>
+                <p>Descrição: <%= invites[i].description %></p>
+                <p>Responsável: <%= invites[i].bossName ?? "Sem responsável" %></p>
+                <a href="/team/invite/approve?inviteId=<%=invites[i].inviteId%>&&teamId=<%=invites[i].id%>">Aceitar</a>
+                <a href="/team/invite/reject?inviteId=<%=invites[i].inviteId%>&&teamId=<%=invites[i].id%>">Rejeitar</a>
+            </div>
+        </li>
+    <% } %>
+</ul>
 <h1>Usuários</h1>
-<% for (let j=0; j < users.length; j++) { %>
-    <ul>
+<ul>
+    <% for (let j=0; j < users.length; j++) { %>
         <li>
             <div>
                 <p><%= users[j].name %></p>
                 <a href="/team/list?userId=<%= users[j].id %>">Ver times</a>
             </div>
         </li>
-    </ul>
-<% } %>
+    <% } %>
+</ul>

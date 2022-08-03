@@ -46,6 +46,10 @@ class InvitationController {
     getInvitationUsers = (req, res) => {
         UserModel.listNoParticipants(req.query.teamId).then(users => {
             return res.render("team/usersInvites", { users: users });
+        }).catch(err => {
+            if (err instanceof QueryResultError) {
+                return res.render("team/usersInvites", { users: [] });
+            }
         });
     };
 }

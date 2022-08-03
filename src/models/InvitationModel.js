@@ -20,6 +20,10 @@ class InvitationModel {
     cancel = (inviteId) => {
         return db.invitations.cancel(inviteId);
     };
+
+    myInvites = (userId) => {
+        return db.invitations.myInvites(userId);
+    };
 }
 
 export default new InvitationModel;
