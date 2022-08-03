@@ -12,6 +12,10 @@ class ParticipantModel {
     delete = (teamId, userId) => {
         return db.participants.delete(teamId, userId);
     };
+
+    sendInvite = (teamId, userId, createdBy) => {
+        return db.participants.sendInvite(teamId, userId, createdBy);
+    };
 }
 
 export default new ParticipantModel;

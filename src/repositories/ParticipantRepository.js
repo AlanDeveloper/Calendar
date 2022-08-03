@@ -15,6 +15,10 @@ class ParticipantRepository {
     delete(teamId, userId) {
         return this.rep.none(`DELETE FROM participants WHERE "userId" = ${userId} AND "teamId" = ${teamId}`);
     }
+
+    sendInvite(teamId, userId, createdBy) {
+        return this.rep.none(`INSERT INTO invitations("teamId", "userId","createdBy") VALUES (${teamId}, ${userId}, ${createdBy})`);
+    }
 }
 
 export default ParticipantRepository;

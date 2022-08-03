@@ -20,6 +20,12 @@ class ParticipantController {
             return res.redirect("/dashboard");
         });
     };
+
+    getInvitation = (req, res) => {
+        ParticipantModel.sendInvite(req.query.teamId, req.query.userId, req.session.user.id).then(() => {
+            return res.redirect("/dashboard");
+        });
+    };
 }
 
 export default new ParticipantController;
