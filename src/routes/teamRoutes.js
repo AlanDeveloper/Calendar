@@ -19,4 +19,9 @@ teamRoutes.get("/team/delete", isAuthenticated, TeamController.getDelete);
 
 teamRoutes.get("/team/invite", isAuthenticated, InvitationController.getInvitation);
 
+teamRoutes.get("/team/invite/list", isAuthenticated, InvitationController.getInvitationsTeam);
+
+teamRoutes.get("/team/invite/approve", isAuthenticated, InvitationController.getApproveInvite);
+teamRoutes.get("/team/invite/reject", isAuthenticated, InvitationController.getRejectInvite);
+
 export default teamRoutes;

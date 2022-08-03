@@ -1,0 +1,10 @@
+<h1>Convites</h1>
+<% for (let i=0; i < invites.length; i++) { %>
+    <div>
+        <p>
+            <%= invites[i].name %><%=invites[i].id%>
+        </p>
+        <a href="/team/invite/approve?inviteId=<%=invites[i].id%>&&teamId=<%=query.teamId%>">Aprovar</a>
+        <a href="/team/invite/reject?inviteId=<%=invites[i].id%>&&teamId=<%=query.teamId%>">Rejeitar</a>
+    </div>
+<% } %>

@@ -4,6 +4,18 @@ class InvitationModel {
     sendInvite = (teamId, userId, createdBy) => {
         return db.invitations.sendInvite(teamId, userId, createdBy);
     };
+
+    getInvites = (teamId) => {
+        return db.invitations.getInvites(teamId);
+    };
+
+    approve = (inviteId) => {
+        return db.invitations.approve(inviteId);
+    };
+
+    reject = (inviteId) => {
+        return db.invitations.reject(inviteId);
+    };
 }
 
 export default new InvitationModel;
