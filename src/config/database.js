@@ -3,6 +3,7 @@ import UserRepository from "../repositories/UserRepository.js";
 import TeamRepository from "../repositories/TeamRepository.js";
 import ParticipantRepository from "../repositories/ParticipantRepository.js";
 import InvitationRepository from "../repositories/InvitationRepository.js";
+import ScheduleRepository from "../repositories/ScheduleRepository.js";
 
 const pgp = pgPromise({
     // eslint-disable-next-line no-unused-vars
@@ -18,6 +19,7 @@ const pgp = pgPromise({
         obj.teams = new TeamRepository(obj, pgp);
         obj.participants = new ParticipantRepository(obj, pgp);
         obj.invitations = new InvitationRepository(obj, pgp);
+        obj.schedule = new ScheduleRepository(obj, pgp);
         // You can set different repositories based on `dc`
     },
 

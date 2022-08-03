@@ -2,6 +2,7 @@ import express from "express";
 import TeamController from "../controllers/TeamController.js";
 import ParticipantController from "../controllers/ParticipantController.js";
 import InvitationController from "../controllers/InvitationController.js";
+import ScheduleController from "../controllers/ScheduleController.js";
 import isAuthenticated from "../helpers/isAuthenticated.js";
 
 const teamRoutes = express.Router();
@@ -26,5 +27,8 @@ teamRoutes.get("/team/invite/list", isAuthenticated, InvitationController.getInv
 teamRoutes.get("/team/invite/approve", isAuthenticated, InvitationController.getApproveInvite);
 teamRoutes.get("/team/invite/reject", isAuthenticated, InvitationController.getRejectInvite);
 teamRoutes.get("/team/invite/cancel", isAuthenticated, InvitationController.getCancelInvite);
+
+teamRoutes.get("/team/schedule", isAuthenticated, ScheduleController.getSchedule);
+teamRoutes.post("/team/schedule", isAuthenticated, ScheduleController.postSchedule);
 
 export default teamRoutes;

@@ -17,6 +17,7 @@
                 <% if (user.id === teams[i].bossId && user.id == query.userId) { %>
                 <a href="/team/invite/users?teamId=<%=teams[i].id%>">Convidar usuários</a>
                 <% } %>
+                <a href="/team/schedule?teamId=<%=teams[i].id%>">Alocar horário</a>
                 <% if (user.id === teams[i].bossId && user.id == query.userId) { %>
                     <a href="/team/invite/list?teamId=<%=teams[i].id%>">Ver convites</a>
                 <% } %>

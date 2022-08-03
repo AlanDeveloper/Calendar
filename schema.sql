@@ -49,3 +49,17 @@ CREATE TABLE "invitations" (
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
+
+CREATE TABLE "schedule" (
+    "id" SERIAL PRIMARY KEY,
+    "date" TIMESTAMP NOT NULL,
+    "teamId" INT NOT NULL,
+    "createdAt" TIMESTAMP DEFAULT NOW(),
+    "createdBy" INT NOT NULL,
+    FOREIGN KEY ("teamId") REFERENCES "teams"("id")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY ("createdBy") REFERENCES "users"("id")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
