@@ -9,7 +9,7 @@ class TeamRepository {
     }
 
     listAll(userId) {
-        return this.rep.many(`SELECT *, (CASE WHEN (SELECT COUNT(*) FROM participants WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE (CASE WHEN (SELECT COUNT(*) FROM invitations WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE false END) END) AS participate FROM teams`);
+        return this.rep.many(`SELECT teams.*, users.name AS "boosName", (CASE WHEN (SELECT COUNT(*) FROM participants WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE (CASE WHEN (SELECT COUNT(*) FROM invitations WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE false END) END) AS participate FROM teams INNER JOIN users ON users.id = teams."boosId"`);
     }
 
     myTeams(userId) {
@@ -18,6 +18,10 @@ class TeamRepository {
 
     delete(teamId) {
         return this.rep.none(`DELETE FROM teams WHERE id = ${teamId}`);
+    }
+
+    deleteBoos(teamId, userId) {
+        return this.rep.none(`UPDATE teams SET "boosId" = null WHERE "boosId" = ${userId} AND id = ${teamId}`);
     }
 }
 

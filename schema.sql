@@ -13,7 +13,7 @@ CREATE TABLE "teams" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR(255) NOT NULL,
     "description" VARCHAR(1000) NOT NULL,
-    "boosId" INT NOT NULL,
+    "boosId" INT,
     "createdAt" TIMESTAMP DEFAULT NOW(),
     FOREIGN KEY ("boosId") REFERENCES "users"("id")
         ON DELETE SET NULL

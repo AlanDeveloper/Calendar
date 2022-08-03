@@ -1,5 +1,6 @@
 import pgPromise from "pg-promise";
 import ParticipantModel from "../models/ParticipantModel.js";
+import TeamModel from "../models/TeamModel.js";
 
 const QueryResultError = pgPromise.errors.QueryResultError;
 
@@ -17,7 +18,9 @@ class ParticipantController {
 
     getExit = (req, res) => {
         ParticipantModel.delete(req.query.teamId, req.session.user.id).then(() => {
-            return res.redirect("/dashboard");
+            TeamModel.deleteBoos(req.query.teamId, req.session.user.id).then(() => {
+                return res.redirect("/dashboard");
+            });
         });
     };
 

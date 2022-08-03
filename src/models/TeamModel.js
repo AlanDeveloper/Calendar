@@ -16,6 +16,10 @@ class TeamModel {
     delete = (teamId) => {
         return db.teams.delete(teamId);
     };
+
+    deleteBoos = (teamId, userId) => {
+        return db.teams.deleteBoos(teamId, userId);
+    };
 }
 
 export default new TeamModel;

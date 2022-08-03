@@ -12,6 +12,7 @@
         <li>
             <div>
                 <p><%= teams[i].name %></p>
+                <p>Responsável: <%= teams[i].boosName ?? "Sem responsável" %></p>
                 <a href="/team/participants?teamId=<%=teams[i].id%>">Ver participantes</a>
                 <% if (teams[i].participate == false) { %>
                     <a href="/team/invite?teamId=<%=teams[i].id%>&&userId=<%=user.id%>">Enviar convite</a>
