@@ -45,7 +45,7 @@ class TeamController {
 
     getDelete = (req, res) => {
         TeamModel.delete(req.query.teamId).then(() => {
-            return res.redirect("/team/list");
+            return res.redirect("/team/list?userId=" + req.session.user.id);
         });
     };
 }

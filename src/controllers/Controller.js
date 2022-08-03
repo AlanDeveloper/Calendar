@@ -7,7 +7,7 @@ const QueryResultError = pgPromise.errors.QueryResultError;
 class Controller {
 
     index = (req, res) => {
-        TeamModel.listAll().then(teams => {
+        TeamModel.listAll(req.session.user.id).then(teams => {
             UserModel.listAll().then(users => {
                 return res.render("dashboard", { teams: teams, users: users });
             });

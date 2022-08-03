@@ -5,8 +5,8 @@ class TeamModel {
         return db.teams.add(obj);
     };
 
-    listAll = () => {
-        return db.teams.listAll();
+    listAll = (userId) => {
+        return db.teams.listAll(userId);
     };
 
     myTeams = (userId) => {

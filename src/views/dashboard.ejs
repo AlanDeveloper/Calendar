@@ -13,7 +13,9 @@
             <div>
                 <p><%= teams[i].name %></p>
                 <a href="/team/participants?teamId=<%=teams[i].id%>">Ver participantes</a>
-                <a href="/team/invite?teamId=<%=teams[i].id%>&&userId=<%=user.id%>">Enviar convite</a>
+                <% if (teams[i].participate == false) { %>
+                    <a href="/team/invite?teamId=<%=teams[i].id%>&&userId=<%=user.id%>">Enviar convite</a>
+                <% } %>
             </div>
         </li>
     </ul>

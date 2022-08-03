@@ -8,8 +8,8 @@ class TeamRepository {
         return this.rep.one(`INSERT INTO teams(name, description, "boosId") VALUES('${obj.name}', '${obj.description}', ${obj.boosId}) RETURNING id`, a => a.id);
     }
 
-    listAll() {
-        return this.rep.many("SELECT * FROM teams");
+    listAll(userId) {
+        return this.rep.many(`SELECT *, (CASE WHEN (SELECT COUNT(*) FROM participants WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE (CASE WHEN (SELECT COUNT(*) FROM invitations WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE false END) END) AS participate FROM teams`);
     }
 
     myTeams(userId) {
