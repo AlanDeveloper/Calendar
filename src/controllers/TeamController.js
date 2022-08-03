@@ -14,7 +14,7 @@ class TeamController {
         let obj = {
             name: req.body.name,
             description: req.body.description,
-            boosId: req.session.user.id
+            bossId: req.session.user.id
         };
 
         TeamModel.create(obj).then(result => {

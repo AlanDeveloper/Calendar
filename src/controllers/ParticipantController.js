@@ -18,7 +18,7 @@ class ParticipantController {
 
     getExit = (req, res) => {
         ParticipantModel.delete(req.query.teamId, req.session.user.id).then(() => {
-            TeamModel.deleteBoos(req.query.teamId, req.session.user.id).then(() => {
+            TeamModel.deleteboss(req.query.teamId, req.session.user.id).then(() => {
                 return res.redirect("/dashboard");
             });
         });

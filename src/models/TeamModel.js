@@ -17,8 +17,8 @@ class TeamModel {
         return db.teams.delete(teamId);
     };
 
-    deleteBoos = (teamId, userId) => {
-        return db.teams.deleteBoos(teamId, userId);
+    deleteboss = (teamId, userId) => {
+        return db.teams.deleteboss(teamId, userId);
     };
 }
 

@@ -5,11 +5,11 @@ class TeamRepository {
     }
 
     add(obj) {
-        return this.rep.one(`INSERT INTO teams(name, description, "boosId") VALUES('${obj.name}', '${obj.description}', ${obj.boosId}) RETURNING id`, a => a.id);
+        return this.rep.one(`INSERT INTO teams(name, description, "bossId") VALUES('${obj.name}', '${obj.description}', ${obj.bossId}) RETURNING id`, a => a.id);
     }
 
     listAll(userId) {
-        return this.rep.many(`SELECT teams.*, users.name AS "boosName", (CASE WHEN (SELECT COUNT(*) FROM participants WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE (CASE WHEN (SELECT COUNT(*) FROM invitations WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE false END) END) AS participate FROM teams INNER JOIN users ON users.id = teams."boosId"`);
+        return this.rep.many(`SELECT teams.*, users.name AS "bossName", (CASE WHEN (SELECT COUNT(*) FROM participants WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE (CASE WHEN (SELECT COUNT(*) FROM invitations WHERE "teamId" = teams.id AND "userId" = ${userId}) > 0 THEN true ELSE false END) END) AS participate FROM teams INNER JOIN users ON users.id = teams."bossId"`);
     }
 
     myTeams(userId) {
@@ -20,8 +20,8 @@ class TeamRepository {
         return this.rep.none(`DELETE FROM teams WHERE id = ${teamId}`);
     }
 
-    deleteBoos(teamId, userId) {
-        return this.rep.none(`UPDATE teams SET "boosId" = null WHERE "boosId" = ${userId} AND id = ${teamId}`);
+    deleteboss(teamId, userId) {
+        return this.rep.none(`UPDATE teams SET "bossId" = null WHERE "bossId" = ${userId} AND id = ${teamId}`);
     }
 }
 
