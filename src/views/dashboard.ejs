@@ -12,6 +12,7 @@
         <li>
             <div>
                 <p><%= teams[i].name %></p>
+                <p>Descrição: <%= teams[i].description %></p>
                 <p>Responsável: <%= teams[i].bossName ?? "Sem responsável" %></p>
                 <a href="/team/participants?teamId=<%=teams[i].id%>">Ver participantes</a>
                 <% if (teams[i].participate == false) { %>

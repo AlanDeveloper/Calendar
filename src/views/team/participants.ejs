@@ -1,7 +1,9 @@
 <h1>Participantes</h1>
 <% for (let i=0; i < participants.length; i++) { %>
+    <% let d = new Date(participants[i].createdAt); %>
     <div>
         <p><%= participants[i].name %></p>
+        <p>Entrou em: <%= d.getDay() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() %></p>
         <a href="#">Ver agenda</a>
     </div>
 <% } %>

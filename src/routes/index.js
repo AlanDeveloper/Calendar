@@ -7,7 +7,7 @@ import Controller from "../controllers/Controller.js";
 const routes = express.Router();
 
 routes.get("/", function (req, res) {
-    return res.render("index");
+    return res.redirect("/login");
 });
 
 routes.get("/dashboard", isAuthenticated, Controller.index);
