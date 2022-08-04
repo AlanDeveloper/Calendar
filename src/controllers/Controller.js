@@ -14,7 +14,7 @@ class Controller {
                     return res.render("dashboard", { teams: teams, users: users, invites: invites });
                 }).catch(err => {
                     if (err instanceof QueryResultError) {
-                        return res.render("dashboard", { teams: [], users: users, invites: [] });
+                        return res.render("dashboard", { teams: teams, users: users, invites: [] });
                     }
                 });
             });

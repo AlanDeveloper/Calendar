@@ -52,7 +52,7 @@ CREATE TABLE "invitations" (
 
 CREATE TABLE "schedule" (
     "id" SERIAL PRIMARY KEY,
-    "date" TIMESTAMP NOT NULL,
+    "date" TIMESTAMP UNIQUE NOT NULL,
     "teamId" INT NOT NULL,
     "createdAt" TIMESTAMP DEFAULT NOW(),
     "createdBy" INT NOT NULL,

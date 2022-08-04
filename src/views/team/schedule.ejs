@@ -2,6 +2,37 @@
 <form method="post">
     <label for="date">Data</label>
     <input type="datetime-local" name="date" id="date">
+    <% if(typeof error !=='undefined' ){ %>
+        <p>
+            <%= error %>
+        </p>
+    <% } %>
     <input type="hidden" name="teamId" value="<%=query.teamId%>">
     <input type="submit" value="Alocar">
 </form>
+
+<h1>Datas ocupadas</h1>
+<div id="dates">
+    <% for (let i=0; i < dates.length; i++) { %>
+        <% let d=new Date(dates[i].date); %>
+        <p><%= d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() %></p>
+    <% } %>
+</div>
+
+<script>
+    let date = document.querySelector("input[type=datetime-local]");
+    let dates = document.querySelector("#dates");
+    let form = document.querySelector("form");
+
+    form.addEventListener("submit", function (e) {
+        let dateBR = date.value.split("T");
+        let aux = dateBR[0].split("-");
+        dateBR = aux[2].replace("0", "") + "/" + aux[1].replace("0", "") + "/" + aux[0] + " " + dateBR[1];
+
+        if (dates.innerText.includes(dateBR)) {
+            e.preventDefault();
+            alert("Data já alocaada");
+        }
+    });
+</script>
+
