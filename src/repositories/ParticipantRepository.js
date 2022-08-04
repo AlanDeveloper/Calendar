@@ -9,7 +9,7 @@ class ParticipantRepository {
     }
 
     listAll(teamId) {
-        return this.rep.many(`SELECT * FROM participants INNER JOIN users ON users.id = participants."userId" WHERE "teamId" = ${teamId}`);
+        return this.rep.many(`SELECT *, users.id AS "userId" FROM participants INNER JOIN users ON users.id = participants."userId" WHERE "teamId" = ${teamId}`);
     }
 
     delete(teamId, userId) {

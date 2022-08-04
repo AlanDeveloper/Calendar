@@ -31,4 +31,6 @@ teamRoutes.get("/team/invite/cancel", isAuthenticated, InvitationController.getC
 teamRoutes.get("/team/schedule", isAuthenticated, ScheduleController.getSchedule);
 teamRoutes.post("/team/schedule", isAuthenticated, ScheduleController.postSchedule);
 
+teamRoutes.get("/team/schedule/user", isAuthenticated, ScheduleController.getUserSchedule);
+
 export default teamRoutes;

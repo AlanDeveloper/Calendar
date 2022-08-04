@@ -27,11 +27,22 @@
     form.addEventListener("submit", function (e) {
         let dateBR = date.value.split("T");
         let aux = dateBR[0].split("-");
+        let aux2 = dateBR[1].split(":")[0];
         dateBR = aux[2].replace("0", "") + "/" + aux[1].replace("0", "") + "/" + aux[0] + " " + dateBR[1];
 
         if (dates.innerText.includes(dateBR)) {
             e.preventDefault();
-            alert("Data já alocaada");
+            alert("Data já alocada");
+        }
+
+        if (parseInt(aux2) < 8 || parseInt(aux2) > 16) {
+            e.preventDefault();
+            alert("Horário indisponível");
+        }
+
+        if (new Date(date.value).getDay() == 0 || new Date(date.value).getDay() == 6) {
+            e.preventDefault();
+            alert("Dia indisponível");
         }
     });
 </script>

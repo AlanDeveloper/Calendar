@@ -4,6 +4,6 @@
     <div>
         <p><%= participants[i].name %></p>
         <p>Entrou em: <%= d.getDay() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() %></p>
-        <a href="#">Ver agenda</a>
+        <a href="/team/schedule/user?userId=<%=participants[i].userId%>">Ver agenda</a>
     </div>
 <% } %>

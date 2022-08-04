@@ -21,6 +21,16 @@ class ScheduleController {
             return res.redirect("/team/schedule?teamId=" + req.body.teamId);
         });
     };
+
+    getUserSchedule = (req, res) => {
+        ScheduleModel.getUserDates(req.query.userId).then(dates => {
+            return res.render("team/userSchedule", { dates: dates });
+        }).catch(err => {
+            if (err instanceof QueryResultError) {
+                return res.render("team/userSchedule", { dates: [] });
+            }
+        });
+    };
 }
 
 export default new ScheduleController;

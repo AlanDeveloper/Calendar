@@ -8,6 +8,10 @@ class ScheduleModel {
     getDates = (teamId) => {
         return db.schedule.getDates(teamId);
     };
+
+    getUserDates = (userId) => {
+        return db.schedule.getUserDates(userId);
+    };
 }
 
 export default new ScheduleModel;
