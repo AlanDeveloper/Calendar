@@ -36,6 +36,7 @@ const db = pgp({
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
+    ssl: process.env.SSL
 });
 
 export default db;
